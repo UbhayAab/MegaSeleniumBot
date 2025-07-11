@@ -1,0 +1,193 @@
+**Telegram Bot Command Reference — MegaSeleniumBot**
+
+---
+
+This document outlines the complete command structure and input format for all supported automation actions via Telegram. Each command triggers the creation of a job file to be executed by the relevant Selenium automation script.
+
+---
+
+### 1. Post a Tweet
+
+**Command Format:**
+
+```
+/tweet <profile_name> <tweet_content>
+```
+
+**Input Type:** Single message
+
+**Example:**
+
+```
+/tweet ubhay AI is changing the nature of education.
+```
+
+**Required Inputs:**
+
+* `profile_name`: One of the user folders inside `/profiles/`
+* `tweet_content`: Raw tweet content (max 280 chars or will be split into a thread)
+
+---
+
+### 2. Post a LinkedIn Update
+
+**Command Format:**
+
+```
+/linkedin <profile_name> <post_content>
+```
+
+**Input Type:** Single message
+
+**Example:**
+
+```
+/linkedin ayush Just finished a deep-dive into generative UX flows.
+```
+
+**Required Inputs:**
+
+* `profile_name`: Matching user folder
+* `post_content`: Professional or personal update
+
+---
+
+### 3. Auto-Send LinkedIn Connect Messages
+
+**Step 1 — Command Format:**
+
+```
+/connect <profile_name> <custom_message>
+```
+
+**Step 2 — Follow-Up Message:**
+
+```
+<comma-separated LinkedIn profile URLs>
+```
+
+**Example:**
+
+```
+/connect ayush Let's connect around tech and product ideas.
+```
+
+```
+https://linkedin.com/in/a, https://linkedin.com/in/b
+```
+
+**Required Inputs:**
+
+* `profile_name`: Chrome user
+* `custom_message`: Message body (no placeholder replacement yet)
+* `profile_links`: Comma-separated URLs in a second message
+
+---
+
+### 4. Tag Twitter Accounts in a Tweet
+
+**Step 1 — Command Format:**
+
+```
+/tag <profile_name> <tweet_message_with_context>
+```
+
+**Step 2 — Follow-Up Message:**
+
+```
+<comma-separated Twitter usernames or links>
+```
+
+**Example:**
+
+```
+/tag ubhay Amazing collaboration this week
+```
+
+```
+@a, @b, @c
+```
+
+**Required Inputs:**
+
+* `profile_name`: Executor identity
+* `tweet_message_with_context`: Main tweet
+* `profile_links`: Comma-separated @handles or URLs
+
+---
+
+### 5. Auto-Comment on Latest Tweets
+
+**Step 1 — Command Format:**
+
+```
+/comment_twitter <profile_name> <comment_text>
+```
+
+**Step 2 — Follow-Up Message:**
+
+```
+<comma-separated Twitter profile links>
+```
+
+**Example:**
+
+```
+/comment_twitter ubhay Very sharp take.
+```
+
+```
+https://twitter.com/user1, https://twitter.com/user2
+```
+
+**Required Inputs:**
+
+* `profile_name`: Executor user
+* `comment_text`: What to comment
+* `profile_links`: Twitter profile URLs (max 50 recommended)
+
+---
+
+### 6. Auto-Comment on Latest LinkedIn Posts
+
+**Step 1 — Command Format:**
+
+```
+/comment_linkedin <profile_name> <comment_text>
+```
+
+**Step 2 — Follow-Up Message:**
+
+```
+<comma-separated LinkedIn profile links>
+```
+
+**Example:**
+
+```
+/comment_linkedin ayush Well-articulated point on hiring systems.
+```
+
+```
+https://linkedin.com/in/abc, https://linkedin.com/in/xyz
+```
+
+**Required Inputs:**
+
+* `profile_name`: Folder in `/profiles/`
+* `comment_text`: Text to post
+* `profile_links`: Comma-separated URLs of profiles to comment on
+
+---
+
+### Notes
+
+* All commands must begin with `/`
+* `profile_name` must match an existing folder inside `/profiles/`
+* Second message for link-based actions is required
+* All inputs are plain-text. No file uploads or structured JSON.
+* Bot replies with confirmation upon successful job capture.
+
+---
+
+**End of Command Guide**
