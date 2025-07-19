@@ -1,0 +1,12 @@
+{
+  "users": {
+    "ubhay": {
+      "phone": "+1234567890",
+      "password": "ubhay123"
+    },
+    "ayush": {
+      "phone": "+0987654321",
+      "password": "ayush456"
+    }
+  }
+}
