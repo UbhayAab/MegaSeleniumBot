@@ -5,3 +5,4 @@ jobs/
 data/
 .env
 *.log
+profiles/
