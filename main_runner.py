@@ -24,34 +24,6 @@ observer.schedule(JobHandler(), JOB_DIR, recursive=False)
 observer.start()
 print("Main runner started. Listening for new jobs...")
 
-def process_job(job_file):
-    try:
-        with open(job_file, "r") as f:
-            job = json.load(f)
-
-        user = job["user"]
-        job_type = job["type"]
-        driver = get_or_launch_driver(user)  # Assuming this function exists
-
-        # Call the appropriate action based on job type
-        if job_type == "tweet":
-            perform_tweet(driver, job["content"])
-        elif job_type == "linkedin":
-            perform_linkedin_post(driver, job["content"])
-        elif job_type == "connect":
-            perform_connect(driver, job["content"], job["profile_links"])
-        elif job_type == "tag":
-            perform_tag(driver, job["content"], job["profile_links"])
-        elif job_type == "comment_twitter":
-            perform_comment_twitter(driver, job["content"], job["profile_links"])
-        else:
-            print(f"Unknown job type: {job_type}")
-
-        # Remove the job file after processing
-        os.remove(job_file)
-    except Exception as e:
-        print(f"Error processing job {job_file}: {e}")
-
 drivers = {}
 
 def get_or_launch_driver(user):
